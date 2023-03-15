@@ -15,7 +15,14 @@ public class WebSecurityConfig {
         http
                 .cors().disable()
                 .csrf().disable()
-                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .formLogin().disable()
+                .securityMatcher("/**")
+                .authorizeHttpRequests(registry -> registry
+                        .requestMatchers("/").permitAll()
+                        .anyRequest().authenticated()
+                );
+
         return  http.build();
     }
 }
