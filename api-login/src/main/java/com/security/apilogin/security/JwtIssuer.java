@@ -20,6 +20,7 @@ public class JwtIssuer {
                 .withExpiresAt(Instant.now().plus(Duration.of(1, ChronoUnit.DAYS)))
                 .withClaim("e", email)
                 .withClaim("a" , roles)
-                .sign(Algorithm.HMAC256(properties.getSecretKey()));
+                .sign(Algorithm.HMAC256("secret"));
+//                .sign(Algorithm.HMAC256(properties.getSecretKey()));
     }
 }
