@@ -12,4 +12,9 @@ public class HelloController {
     public String greeting(){
         return "Hello World";
     }
+    @GetMapping("/secured")
+    public String secured() {
+        return "if you see this you're logged in";
+
+    }
 }
