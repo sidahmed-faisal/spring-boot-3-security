@@ -26,6 +26,7 @@ public class WebSecurityConfig {
                 .securityMatcher("/**")
                 .authorizeHttpRequests(registry -> registry
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/swagger-ui/").permitAll()
                         .requestMatchers("/auth/login").permitAll()
                         .anyRequest().authenticated()
                 );
